@@ -31,10 +31,11 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
 
 // auth routes
 $routes->group('',['filter'=>'AuthCheck'],function($routes){
+    
+    $routes->get('/', 'Home::index');
 
     /** Admins routes */  
 
@@ -80,7 +81,7 @@ $routes->group('',['filter'=>'AuthCheck'],function($routes){
     // // user quiz/test routes
     $routes->get('site/tests/(:num)/take','Site\Test::take/$1');
     $routes->post('site/tests/(:num)/check','Site\Test::check/$1');
-    $routes->get('site/tests/(:num)/review','Site\Test::review/$1');
+    $routes->get('site/tests/(:num)/review/(:num)','Site\Test::review/$1/$2');
     
     $routes->get('site/users/profile','User::profile');
     $routes->get('site/(:any)','Home::index');

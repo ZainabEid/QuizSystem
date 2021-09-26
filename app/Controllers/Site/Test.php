@@ -60,43 +60,16 @@ class Test extends BaseController
         //     return view('site/tests/take',$data);
         // }
 
-        $user_id =  auth_user()['id'];
-        $questions = $this->request->getPost('questions');
-        // init the test report
-        $report_id = $this->reportModel->insert([
-            'user_id' => $user_id,
-            'test_id' => $test_id,
-            'grade' => 0,
-        ]);
+      $report_id = $this->reportModel->create($test_id, $this->request->getPost('questions'));
 
-        //check the correction of answers & store report details
-        foreach($questions as $question_id => $answer){
 
-            $question =  $this->questionModel->find($question_id);
+        return redirect()->to('site/tests/'.$test_id.'/review/'.$report_id);
+    }
 
-            $is_right = ($question['correct_answer'] == $answer) ? 1 : 0;
-            
-            $this->reportDetailsModel->insert([
-                'report_id' => $report_id,
-                'question_id' => $question_id,
-                'user_answer' => $answer,
-                'is_right' => $is_right
-            ]);
-        }
 
-        // calculate grade
-        $right_count = $this->reportDetailsModel->where('report_id',$report_id)->where('is_right',1)->countAllResults();
-        $question_count = $this->questionModel->where('test_id',$test_id)->countAllResults();
-
-        $grade = $right_count / $question_count * 100;
-
-        // update the grade in the report
-        $this->reportModel->update($report_id,[
-            'grade'=>$grade,
-        ]);
-
-        
-        // review the report
+    // review the report
+    public function review($test_id, $report_id)
+    {
         $test = $this->testModel->find($test_id);
         $test['questions'] = $this->questionModel->where('test_id',$test_id)->findAll();
 
@@ -110,7 +83,6 @@ class Test extends BaseController
         ];
 
         return view('site/tests/review',$data);
-
     }
 
 
