@@ -1,12 +1,20 @@
 # Quiz System
+Quiz system is an web application developed for teacher who want to make test for his students. The teacher can add much more teachers, he also can add test with multichoice questions and determine which one is the correct answer. The teacher also can add students or a student can register himself on the system. When a teacher logges in a dashboard is open, but when a student logged in a homepage is open. homepage contains all availabe tests. A student can take a test, answer the question and submit the test. After submitting, Student can review his answers, correct answers and the grade. Student also can print the review page.
 
 
+# To test the project:
+1. clone the repository & install vendor
+    - git clone
+    - composer install
+    - composer dumpautoload
 
-# to test the project:
-- clone the repository & install vendor
-- create database quiz_system_db
-- run migration & run seeders
-- login using the following creditials:
+2. create database a mySql database named "quiz_system_db"
+
+3. run migration & run seeders
+    php spark migrate
+    php spark db:seed
+
+4. login using the following credentials:
     - Admin:
         email : 'super_teacher@Quizsystem.com'
         password : 'password'
