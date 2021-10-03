@@ -83,7 +83,13 @@ $routes->group('',['filter'=>'AuthCheck'],function($routes){
     $routes->post('site/tests/(:num)/check','Site\Test::check/$1');
     $routes->get('site/tests/(:num)/review/(:num)','Site\Test::review/$1/$2');
     
-    $routes->get('site/users/profile','User::profile');
+    // user
+    $routes->get('site/user/profile','Site\User::profile');
+    $routes->get('site/user/edit','Site\User::edit');
+    $routes->get('site/user/update','Site\User::update');
+
+
+    //home
     $routes->get('site/(:any)','Home::index');
 
 

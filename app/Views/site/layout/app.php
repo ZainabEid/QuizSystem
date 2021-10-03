@@ -40,7 +40,7 @@
     <ul class="navbar-nav ">
       
       <li class="nav-item d-none d-sm-inline-block mr-3 ">
-      <a href="<?= site_url('site/users/profile') ?>" class="nav-link">Welcom <strong><?= ucfirst(auth_user()['name'])?></strong></a>
+      <a href="<?= site_url('site/user/profile') ?>" class="nav-link">Welcom <strong><?= ucfirst(auth_user()['name'])?></strong></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block ">
       <a class="nav-link" href="<?= site_url('auth/logout') ?>">| Logout</a>

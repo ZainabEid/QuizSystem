@@ -36,7 +36,7 @@
     <div class="col-md-4 col-md-offset-4 ">
         <h4> Update User Data</h4>
         <hr>
-        <form action="<?= base_url('dashboard/users/'.$user['id'].'/update')?>" method="post">
+        <form action="<?= base_url('dashboard/users/'.$auth_user()['id'].'/update')?>" method="post">
 
             <?= csrf_field() ?>
             <input type="hidden" name="_method" value="PUT" />
