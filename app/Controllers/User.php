@@ -196,5 +196,10 @@ class User extends BaseController
         return redirect()->to('dashboard/users')->with('success','deleted successfully');
         
     }
+
+    public function profile()
+    {
+        
+    }
   
 }
