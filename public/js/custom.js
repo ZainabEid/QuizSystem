@@ -1,7 +1,6 @@
 $(document).ready(function () {
     $('body').on('click', '#add-new-question', function (e) {
         e.preventDefault();
-        alert('document is readey');
 
 
         var questions_count = $('#questions').children().length;

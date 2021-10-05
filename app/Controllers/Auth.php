@@ -70,28 +70,31 @@ class Auth extends BaseController
 
         if(!$validation){
             return view('auth/register',['validation' => $this->validator]);
-        }else{
-            // echo 'Form validated successfully';
-
-            $userModel = new UserModel();
-            $query = $userModel->insert([
-                'name' => $this->request->getPost('name'),
-                'email' => $this->request->getPost('email'),
-                'password' => Hash::make( $this->request->getPost('password')),
-            ]);
-            if(!$query){
-                return redirect()->back()->with('fail','something went wrong');
-                // return redirect()->to('register')->with('fail','something went wrong');
-            }else{
-                // return redirect()->to('auth/register')->with('success','registered successfully');
-
-                $last_id  = $userModel->insertID();
-                $user = $userModel->find( $last_id);
-                
-                session()->set('loggedUser',$user);
-                return redirect()->to('/dashboard');  
-            }
         }
+        
+
+        $userModel = new UserModel();
+
+        $query = $userModel->insert([
+            'name' => $this->request->getPost('name'),
+            'email' => $this->request->getPost('email'),
+            'password' => Hash::make( $this->request->getPost('password')),
+        ]);
+
+        if(!$query){
+            return redirect()->back()->with('fail','something went wrong');
+
+        }
+        
+
+        $last_id  = $userModel->insertID();
+        $user = $userModel->find( $last_id);
+        
+        session()->set('loggedUser',$user);
+
+        return redirect()->to('/home');  
+    
+        
     }
 
     public function check()

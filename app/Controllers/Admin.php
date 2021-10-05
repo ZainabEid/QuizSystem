@@ -132,7 +132,7 @@ class Admin extends BaseController
                 ]
             ],
             'email' => [
-                'rules' => 'required|valid_email|is_unique[users.email,id,1]',
+                'rules' => 'required|valid_email|is_unique[users.email,id,'.$user_id.']',
                 'errors' => [
                     'required' => 'your name is required',
                     'valid_email' => 'your must enter a valid email',

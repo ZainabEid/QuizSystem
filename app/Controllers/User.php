@@ -124,7 +124,7 @@ class User extends BaseController
     public function update($user_id)
     {
 
-        dd('in user update');
+       
         // validation
         $validation = $this->validate([
             'name' => [
@@ -141,9 +141,7 @@ class User extends BaseController
                     'is_unique' => 'email is already taken',
                 ]
             ],
-            'is_admin' => [
-                'rules' => 'required|in_list[true,false]',
-            ],
+           
 
         ]);
 
