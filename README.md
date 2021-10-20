@@ -4,19 +4,7 @@ Quiz system is an web application developed for teacher who want to make test fo
 # try the application
 http://quizsystem.rf.gd/
 
-
-# To test the project:
-1. get the project :
-    - clone the repository & install vendor
-       
-
-2. create database a mySql database named "quiz_system_db"
-
-3. run migration & run seeders
-    php spark migrate
-    php spark db:seed
-
-4. login using the following credentials:
+- login using the following credentials:
     - Admin:
         email : 'super_teacher@Quizsystem.com'
         password : 'password'
